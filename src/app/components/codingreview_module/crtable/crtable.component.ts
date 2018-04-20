@@ -116,10 +116,10 @@ var c=document.getElementById('new');
           // alert("inside innerhtml");
           tr[i].style.display = "";
          }
-        //  else if(td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+         else if(td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
 
-        //   tr[i].style.display = "";
-        //  }
+          tr[i].style.display = "";
+         }
           else {
             // alert("keeeeeeeeeeeeeeeppppppppppp newwwwwwwwwwwww")
             // this.read_checks()
