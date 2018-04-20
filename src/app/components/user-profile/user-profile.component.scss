@@ -1,0 +1,154 @@
+@import "../../../global-scss/_variables.scss";
+
+.profile-section {
+    width: 100%;
+    color: #222222;
+    
+    .user-section {
+        height: 17vh;
+        padding-left: 1.0em;
+        padding-top: 1.9em;
+        background-color: darkgray;
+        
+        & > h2 {
+            color: #222222;
+            font-size: 1.5em;
+            margin: 0px;
+            font-weight: $font-weight-medium;
+        }
+        
+        .employee-info {
+            margin-top: 1.2em;
+            font-weight: 500;
+            
+            .small-heading {
+                font-weight: $font-weight-light;
+                font-size: 0.7em;
+            }
+        }
+    }
+
+    .manage-role-section {
+        position: relative;
+        height: 69vh;
+        background-color: $med-grey;
+        padding-left: 1.0em;
+        padding-top: 1.2em;
+        
+        .role-heading {
+            display: inline-block;
+            font-size: 1.2em;
+            color: #474747;
+            font-weight: $font-weight-medium;
+            margin-bottom: 10px;
+        }
+
+        .custom-radio {
+            margin-bottom: 5px;
+
+            .heading-wrapper {
+                margin-bottom: 5px;
+                
+            }
+            .radio-heading {
+                color: #222222;
+                font-size: 1.0em;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            .info-icon {
+                display: inline-block;
+                position: relative;
+                margin-left: 3px; 
+                width: 17px;
+                height: 17px;
+                background-image: url("../../../assets/images/info-icon.svg");
+                background-repeat: no-repeat;
+                pointer-events: none;
+            }
+
+            .roles-wrapper {
+                margin-left: -5.5em;
+
+                .role-label {
+                    color: #222;
+                    cursor: pointer;
+                    margin-left: 6.5em;
+                    
+                    input {
+                        &[type="radio"] {
+                            display: none;
+                        }
+            
+                        &[type="radio"] + .circle:before {
+                            content: "";
+                            display: inline-block;
+                            position: absolute;
+                            border: 1px solid #ccc;
+                            width: 22px;
+                            height: 22px;
+                            top:0;
+                            left:0;
+                            border-radius: 50%;
+                        }
+            
+                        &:checked + .circle:before {
+                            content: "";
+                            position: absolute;
+                            width: 22px;
+                            height: 22px;
+                            top: 0;
+                            left: 0;
+                            border: 1px solid $light-blue;
+                            border-radius: 50%;
+                        }
+                        &:checked + .circle:after {
+                            content: "";
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            border: 2px solid white;
+                            border-radius: 50%;
+                            top: 1px;
+                            left: 1px;
+                            background: $light-blue;
+                        }
+
+                        &:checked + .circle {
+                            color: $light-blue;
+                        }
+                    }
+            
+                    .circle {
+                        position: relative;
+                        padding-top: 3px;
+                        padding-left: 35px;
+                        color: $dark-blue;
+                    }  
+                }
+            }
+        }
+
+        .button-footer {
+            width: 100%;
+            right: 1.2em;
+            bottom: 1.2em;
+            position: absolute;
+            text-align: right;
+
+            .btn-default {
+                width: 7%;
+                background: transparent;
+                border: none;
+                margin-right: 10px;
+            }
+
+            .btn-primary {
+                background-color: $dark-blue;
+                width: 7%;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,83 @@
+@import "../../../global-scss/_variables.scss";
+
+.table-section {
+    color: black;
+    background-color: $med-grey;
+    margin: 1.2em 1.2em;
+    position: relative;
+
+    .table {
+        padding: 10px;
+        background: white;
+
+        & > thead {
+            background: transparent;
+        }
+        & > thead > tr {
+            border-bottom-color: $light-blue;
+        }
+        & > thead > tr > th {
+            font-weight: 200;
+            color: $dark-blue;
+            font-size: 13px;
+            padding: 4px;
+            border-bottom: none;
+        }
+
+        & > thead > tr > th.active {
+            background: transparent;
+        }
+
+        & > thead > tr > th:first-child {
+            position: relative;
+            cursor: pointer;
+            &::after {
+               content: "";
+               display: inline-block;
+               position: absolute;
+               height: 0.9em;
+               width: 0.9em;
+               top: 44%;
+               left: 23%;
+               background-image: url("../../../assets/images/arrow-icon-blue-fill.svg");
+               background-repeat: no-repeat;
+               pointer-events: none;
+           } 
+        }
+
+        & > tbody {
+            // border: 0.5px solid $med-grey;
+            color: #222222;
+        }
+        
+    }
+
+    .table-pagination {
+        & /deep/ .ngx-pagination {
+            width: 32%;
+            position: absolute;
+            right: 0px;
+
+            li {
+                &:hover {
+                    text-decoration: none;
+                    background: white;
+                }
+            }
+            .current {
+                background: white;
+                color: black;
+                border: 1px solid black;
+            }
+
+        }
+    }
+
+    .note-block {
+        position: absolute;
+        bottom: 0px;
+        height: 5vh;
+        text-align: center;
+        border-color: darkgray;
+    }
+}

@@ -1,0 +1,32 @@
+// Global SASS Variables and Theaming
+
+// Text Related Styling Variables
+$font-size-base: 16px;
+$font-color: #FFFFFF;
+$font-weight-light: 200;
+$font-weight-medium: 400;
+$font-weight-dark: 700;
+
+
+// Color Related Styling Variables
+$dark-blue: #062466;
+$light-blue: #0048db;
+$light-grey-blue: #9bbed8;
+$dark-grey-blue: #7791b2;
+$light-green: #69F3AB;
+$med-grey: #EBEBEB;
+
+// Named Color Variables
+$color-primary: #488AFF;
+$color-secondary: #32DB64;
+$color-danger: #F53D3D;
+$color-ligth: #F4F4F4;
+$color-dark: #222222;
+
+// Including Font Stack
+$app-font-stack: "Helvetica Neue", "Roboto", sans-serif !default;
+
+// Media Query endpoints
+$small-devices: 768px;
+$medium-devices: 992px;
+$large-devices: 1200px;

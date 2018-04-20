@@ -1,0 +1,160 @@
+<section class="section-wrapper">
+  <!-- sucess toast opens when the data has been submitted on the backend -->
+  <div *ngIf="toast_flag" [ngClass]="{'sucess-toast': toast_flag, 'sucess-toast-hidden': !toast_flag}">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"></div>
+    </div>
+    <span class="toast-content">
+      The user has been added to the AMAZE Portal.
+    </span>
+    <span class="close-icon" (click)="onToastCloseClick()"></span>
+  </div>
+
+  <!-- page function heading -->
+  <div class="row">
+    <div class="page-function-heading">
+      <h2>{{ page_function }}</h2>
+    </div>
+  </div>
+  <!-- form to search the name of the user -->
+  <div class="row">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="type" maxlength="15" class="form-control" name="first_name" [(ngModel)]="first_name" placeholder="John" minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="type" maxlength="15" class="form-control" name="last_name" [(ngModel)]="last_name" placeholder="Doe" minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="employee_id">Employee ID</label>
+        <input type="type" class="form-control" name="employee_id" [(ngModel)]="employee_id" placeholder="AF55555" minlength="2">
+      </div>
+      <div class="form-group role-group" [ngStyle]="{'opacity': (search_active_directory == 'true') ? 0.5 : 1 }">
+        <label for="roles">Role</label>
+        <select class="form-control" name="roles" id="roles" [(ngModel)]="role_option" [disabled]="search_active_directory == 'true'">
+          <option [ngValue]="null" [selected]="0 == 0"> --- </option>
+          <option *ngFor="let obj of combination_module_role; let i = index" [ngValue]="obj.mapping">
+            {{ obj.value | capitalize }}
+            <!-- {{ role.description | capitalize }} -->
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="searchBtn btn btn-primary" [disabled]="!(first_name || last_name || employee_id || role_option)" type="submit">
+          <span *ngIf="searchFlag">
+            <i class="search-icon"></i>
+          </span>
+          <span *ngIf="(first_name || last_name || employee_id || role_option) && !searchFlag">
+            <i class="search-spinner"></i>
+          </span>
+          <span [innerHtml]="buttonText"> Search </span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="row table-content">
+    <div *ngIf="!showTable && dataArrayLength === 0 && search_active_directory == 'true' && search_active_error_flag && dirtyFlag">
+      <p> We are unable to find the user in the active directory.</p>
+    </div>
+    <div *ngIf="!showTable && !dirtyFlag && !search_active_error_flag">
+      <p>We are currently showing no results. Enter your criteria and click "Search" to begin search.</p>
+    </div>
+    <div *ngIf="dataArrayLength === 0 && !showTable && dirtyFlag && search_active_directory == 'false'">
+      <p>We found no user with {{ show_active_directory_filed }}. Would you like to search Active Directory for this user?
+        <a routerLink="../search_user" [queryParams]="{search_active_directory: true}" (click)="onSearchActiveDirectory()">Yes, search Active Directory</a>
+      </p>
+    </div>
+    <div *ngIf="showTable && dataArrayLength !== 0">
+      <section class="table-section">
+        <table class="table">
+          <thead>
+            <tr>
+              <th [class.active]="order === 'first_name'" (click)="setOrder('first_name')">FirstName
+              </th>
+              <th>LastName</th>
+              <th>Employee ID</th>
+              <th *ngIf="search_active_directory == 'false'">Role</th>
+              <th *ngIf="search_active_directory == 'true'" class="heading-button"></th>
+            </tr>
+          </thead>
+          <tbody *ngIf="search_active_directory == 'false'; else activeDirectory">
+            <tr *ngFor="let user of users | orderBy: order:reverse:'case-insensitive'| paginate: { itemsPerPage: 8, currentPage: p }; let i = index;"
+              (click)="onRowClick(user.employee_id)">
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.employee_id }}</td>
+              <td *ngIf="search_active_directory == 'false'">
+                <span *ngFor="let mapping of user.mappedArray; let j = index">
+                  {{ mapping.module_name | capitalize }} --
+                  <span *ngFor="let role of mapping.roles; let k = index">
+                    {{ role | capitalize }}
+                  </span> &nbsp;&nbsp;
+                </span> 
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #activeDirectory>
+            <tbody>
+              <tr *ngFor="let user of users | orderBy: order:reverse:'case-insensitive'| paginate: { itemsPerPage: 8, currentPage: p }; let i = index;">
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.employee_id }}</td>
+                <td class="button-column" data-toggle="modal" data-target="#searchRoleModel" (click)="onModalButtonClick(user.first_name, user.last_name, user.employee_id)">
+                  <span class="add-icon" aria-hidden="true"></span>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+        </table>
+        <span class="length-info">Showing {{ dataArrayLength }} of {{ totalLength }} results.</span>
+        <pagination-controls class="table-pagination" (pageChange)="p = $event" (pageChange)="pageChanged($event)" previousLabel="prev"
+          nextLabel="next">
+        </pagination-controls>
+      </section>
+      <div *ngIf="search_active_directory == 'false'" class="note-block">
+        <span>
+          Didn't find you are looking for?
+          <a routerLink="../search_user" [queryParams]="{search_active_directory: true}" (click)="onSearchActiveDirectory()">Search Active Directory</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Below code for modal -->
+<div class="modal fade in" id="searchRoleModel" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="add-icon"></span>
+        <span class="modal-header-heading"> Add User </span>
+      </div>
+      <div class="modal-body">
+        <p>
+          Select the roles you would like to give to
+          <strong> {{ modal_first_name | capitalize }} {{ modal_last_name | capitalize }}</strong>:
+        </p>
+        <div *ngFor="let module of modules_data; let i = index" class="custom-radio">
+          <div class="heading-wrapper">
+            <span class="radio-heading">{{ module.description | capitalize }}</span>
+            <span class="info-icon"></span>
+          </div>
+          <div class="roles-wrapper">
+            <label *ngFor="let role of roles_data; let j = index" class="role-label" [ngStyle]="{'opacity': givepermissions(i) ? 0.5 : 1 }">
+              <input type="radio" [disabled]="givepermissions(i)" [name]="module.description" [checked]="j === 0" [value]="role.id" (change)="onSelectionChange(role, module)">
+              <span class="circle">
+                {{ role.description | capitalize }}
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onModalAddSubmit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

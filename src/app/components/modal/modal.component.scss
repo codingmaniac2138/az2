@@ -1,0 +1,147 @@
+@import "../../../global-scss/_variables.scss";
+
+.modal {
+
+    .modal-dialog {
+        margin-top: 15%;
+
+        .modal-content {
+            height: 550px;
+            width: 750px;
+
+            .modal-header {
+                height: 12%;
+                background-color: $dark-blue;
+                border-bottom: none;
+
+                .add-icon {
+                    display: inline-block;
+                    height: 2.3em;
+                    width: 2.3em;
+                    background-image: url("../../../assets/images/add-icon.svg");
+                    background-repeat: no-repeat;
+                    vertical-align: middle;
+                }
+
+                .modal-header-heading {
+                    display: inline-block;
+                    margin-left: 1.5em;
+                    margin-top: 2px;
+                    font-size: 20px;
+                    vertical-align: middle;
+                    font-weight: $font-weight-light;
+                }
+            }
+
+            .modal-body {
+                height: 77%;
+                color: #222;
+
+                .custom-radio {
+                    padding: 10px;
+                    
+                    .heading-wrapper {
+                        margin-bottom: 5px;
+                        
+                    }
+                    .radio-heading {
+                        color: #222222;
+                        font-size: 1.2em;
+                        margin-bottom: 10px;
+                        display: inline-block;
+                    }
+
+                    .info-icon {
+                        display: inline-block;
+                        position: relative;
+                        margin-left: 3px; 
+                        width: 17px;
+                        height: 17px;
+                        background-image: url("../../../assets/images/info-icon.svg");
+                        background-repeat: no-repeat;
+                        pointer-events: none;
+                    }
+
+                    .roles-wrapper {
+
+                        .role-label {
+                            color: #222;
+                            cursor: pointer;
+                            margin-left: 30px;
+                    
+                            input {
+                                &[type="radio"] {
+                                    display: none;
+                                }
+                    
+                                &[type="radio"] + .circle:before {
+                                    content: "";
+                                    display: inline-block;
+                                    position: absolute;
+                                    border: 1px solid #ccc;
+                                    width: 22px;
+                                    height: 22px;
+                                    top:0;
+                                    left:0;
+                                    border-radius: 50%;
+                                }
+                    
+                                &:checked + .circle:before {
+                                    content: "";
+                                    position: absolute;
+                                    width: 22px;
+                                    height: 22px;
+                                    top: 0;
+                                    left: 0;
+                                    border: 1px solid $light-blue;
+                                    border-radius: 50%;
+                                }
+                                &:checked + .circle:after {
+                                    content: "";
+                                    position: absolute;
+                                    width: 20px;
+                                    height: 20px;
+                                    border: 2px solid white;
+                                    border-radius: 50%;
+                                    top: 1px;
+                                    left: 1px;
+                                    background: $light-blue;
+                                }
+
+                                &:checked + .circle {
+                                    color: $light-blue;
+                                }
+                            }
+                    
+                            .circle {
+                                position: relative;
+                                padding-top: 3px;
+                                padding-left: 35px;
+                                color: $dark-blue;
+                            }  
+                        }
+                    }
+                }
+            }
+
+            .modal-footer {
+                height: 15%;
+                border-top: none;
+
+                .btn-default {
+                    border: none;
+                    width: 20%;
+
+                    &:hover {
+                        background: transparent;
+                    }
+                }
+
+                .btn-primary {
+                    background-color: $dark-blue;
+                    width: 20%;
+                }
+            }
+        }
+    }
+}

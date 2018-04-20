@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./_variables.scss";
+
+// importing the theme from the material's prebuilt themes (indigo-pink)
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  color: $font-color;
+  font-family: $app-font-stack;
+}
+
+h1 {
+  color: $font-color;
+  font-size: 36px;
+  font-weight: $font-weight-medium;
+}
+
+h2 {
+  color: $font-color;
+  font-size: 24px;
+  font-weight: $font-weight-medium;
+}
+
+h3 {
+  color: $font-color;
+  font-size: 18px;
+  font-weight: $font-weight-light;
+}
+
+.amaze-spinner {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  position: relative;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  animation: spinner 1.1s linear infinite;
+  
+  &:after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+  }
+  
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#roleModal">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="add-icon"></span>
+        <span class="modal-header-heading"> Add User </span>
+      </div>
+      <div class="modal-body">
+        <p>
+          Select the roles you would like to give to
+          <strong> {{ first_name | capitalize }} {{ last_name | capitalize }} </strong>:
+        </p>
+          <div *ngFor="let module of modules; let i = index" class="custom-radio">
+            <div class="heading-wrapper">
+              <span class="radio-heading">{{ module.description | capitalize }}</span>
+              <span class="info-icon"></span>
+            </div>
+            <div class="roles-wrapper">
+              <label *ngFor="let role of roles; let j = index" class="role-label" [ngStyle]="{'opacity': (i == 3 || i == 2) ? 0.5 : 1 }">
+                <input type="radio" [disabled]="i == 3 || i == 2"  [name]="module.description" [checked]="j === 0" [value]="role.id" (change)="onSelectionChange(role, module)">
+                <span class="circle">
+                  {{ role.description | capitalize }}
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

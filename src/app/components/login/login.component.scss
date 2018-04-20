@@ -1,0 +1,449 @@
+@import "../../../global-scss/_variables.scss";
+
+/*---------------Login styling mobile first (less than 768px)--------------*/
+.container-fluid {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-wrapper {
+  width: 68vw;
+  background-color: $font-color;
+  background: transparent;
+  margin: 29% auto;
+  height: 50vh;
+}
+
+.background-color {
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    right top,
+    from(#66d5ff),
+    to(#052466)
+  );
+  background: linear-gradient(to top right, #66d5ff, #052466);
+}
+
+.amaze-text-wrapper {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 200;
+
+  p {
+    font-size: 15px;
+    text-transform: none;
+  }
+}
+
+.login-wrapper {
+  padding: 20px;
+  top: 0;
+  background-color: antiquewhite;
+}
+
+.form-wrapper {
+  padding: 5px;
+
+  .form-group {
+    position: relative;
+
+    .user-logo {
+      position: absolute;
+      left: 1px;
+      top: 4px;
+      bottom: 5px;
+      width: 1.2em;
+      background-image: url("../../../assets/images/user-icon.svg");
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+
+    .floating-label {
+      position: absolute;
+      top: 7px;
+      font-size: 12px;
+      left: 35px;
+      font-weight: 200;
+      cursor: pointer;
+      transition: 0.5s ease all;
+    }
+
+    input {
+      text-indent: 20px;
+      
+      &:not(:focus) + .floating-label {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      &:not(:focus).ng-touched + .floating-label {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      &.ng-pristine + .floating-label {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      &.ng-invalid +.floating-label {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      &:not(:focus).ng-dirty + .floating-label {
+        transform: translate3d(-6px, -15px, 0) scale(0.8);
+      }
+      &:not(:focus).ng-valid + .floating-label {
+        transform: translate3d(-6px, -15px, 0) scale(0.8);
+      }
+      &:focus + .floating-label {
+        transform: translate3d(-6px, -15px, 0) scale(0.8);
+      }
+      &.ng-dirty + .floating-label {
+        transform: translate3d(-6px, -15px, 0) scale(0.8);
+      }
+      &.ng-touched + .floating-label {
+        transform: translate3d(-6px, -15px, 0) scale(0.8);
+      }
+      &.ng-valid + .floating-label {
+        transform: translate3d(-5px, -15px, 0) scale(0.8);
+      }
+    }
+
+    .pass-logo {
+      position: absolute;
+      left: 1px;
+      top: 4px;
+      bottom: 8px;
+      width: 1.2em;
+      background-image: url("../../../assets/images/lock-icon.svg");
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+
+    .form-control {
+      display: inline-block;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-bottom: 1px solid rgba(173, 216, 230, 0.3);
+      border-radius: 0;
+      width: 100%;
+      color: white;
+    }
+  }
+}
+
+.checkbox-wrapper {
+  margin-top: 3px;
+  position: relative;
+  label {
+    cursor: pointer;
+  }
+  .checkbox-text {
+    position: absolute;
+    cursor: pointer;
+    top: 6px;
+    left: 21px;
+    font-weight: 200;
+  }
+  input {
+    &[type="checkbox"] {
+      display: none;
+    }
+    &[type="checkbox"] + .checkbox-text:before {
+      content: "\f096";
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-weight: 200;
+      font-variant: normal;
+      text-transform: none;
+      font-size: 20px;
+      position: absolute;
+      top: -4px;
+      left: -21px;
+      margin-right: 5px;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+    }
+    &:checked + .checkbox-text:before {
+      content: "\f046";
+      font-size: 20px;
+      font-weight: 200;
+      animation: tick 180ms ease 1 forwards;
+    }
+  }
+  @keyframes tick {
+    0% {
+      color: #ffffff;
+    }
+    100% {
+      color: $light-green;
+    }
+  }
+  .need-help {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    a {
+      cursor: pointer;
+      color: #ffffff;
+      text-decoration: underline;
+      font-weight: 200;
+    }
+  }
+}
+
+.caremore-logo {
+  position: relative;
+  margin: 6% 30%;
+  height: 3vh;
+}
+
+.margin-small {
+  margin-left: 5px;
+}
+
+.amaze-spinner {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  position: relative;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  animation: spinner 1.1s linear infinite;
+  &:after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.btn-block {
+  width: 100%;
+  height: 3.0em;
+  margin-top: 20px;
+  font-size: 1.0em;
+  font-weight: 200;
+  border-color: $light-green;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.btn-on-clicked {
+  background-color: rgba(105, 243, 172, 0.3) !important;
+}
+
+.btn-color-invalid {
+  background-color: rgba(255, 255, 255, 0.356);
+  border: none;
+}
+
+.btn-color-valid {
+  background-color: rgba(105, 243, 172, 0.5);
+  &:hover {
+    background-color: rgba(105, 243, 172, 0.8);
+  }
+}
+
+.error-block {
+  height: 9vh;
+  width: 45vw;
+  background-color: $color-danger;
+  border-radius: 3px;
+  position: absolute;
+  right: 0;
+  top: 0.5vh;
+  margin-right: 0.3em;
+  padding-top: 0.9em;
+  padding-left: 1.7em;
+  visibility: visible;
+  opacity: 1;
+  font-weight: 200;
+  box-shadow: 0.5px 0.5px 0.5px black;
+  transition: visibility 0.5s linear;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.error-block-hidden {
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}
+
+.error-block span {
+  font-size: 11px;
+}
+
+.close-icon {
+  background-image: url("../../../assets/images/close-icon.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0.8em;
+  right: 0.7em;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.logo-wrapper {
+  width: 100%;
+}
+
+.modal {
+    
+  .modal-dialog {
+
+      .modal-content {
+          font-size: $font-size-base;
+
+          .modal-header {
+              height: 10%;
+              border-bottom: none;
+              
+              .modal-title {
+                  color: $light-blue;
+                  font-size: 1.5em;
+              }
+          }
+
+          .modal-body {
+              color: $light-blue;
+          }
+
+          .modal-footer {
+              border-top: none;
+              
+              .btn-default {
+                  border: none;
+
+                  &:hover {
+                      background-color: #ccc;
+                  }
+              }
+          }
+      }
+  }
+}
+
+/*-----------Login Component Media Queries----------------*/
+
+/* small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .main-wrapper {
+    width: 38vw;
+    margin: 17% auto;
+    height: 44vh;
+  }
+  .form-wrapper {
+    padding: 15px;
+  }
+  .amaze-text-wrapper {
+    font-size: 20px;
+  }
+  .amaze-text-wrapper p {
+    font-size: 15px;
+  }
+  .form-control {
+    width: 100%;
+  }
+  .error-block {
+    width: 20vw;
+  }
+  .error-block span {
+    font-size: 12px;
+  }
+  .close-icon {
+    font-size: 11px;
+  }
+  .caremore-logo {
+    margin: 2% 46%;
+  }
+  .btn-block {
+    height: 2.5em;
+    font-size: 1.2em;
+  }
+}
+
+/* medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .main-wrapper {
+    width: 35vw;
+    margin: 18% auto;
+    height: 44vh;
+  }
+  .form-wrapper {
+    padding: 15px;
+  }
+  .amaze-text-wrapper {
+    font-size: 27px;
+  }
+  .amaze-text-wrapper p {
+    font-size: 15px;
+  }
+  .form-control {
+    width: 100%;
+  }
+  .error-block {
+    width: 20vw;
+  }
+  .error-block span {
+    font-size: 13px;
+  }
+  .close-icon {
+    font-size: 13px;
+  }
+  .caremore-logo {
+    margin: 1% 46%;
+  }
+  .btn-block {
+    height: 3.0em;
+  }
+}
+
+/* large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .main-wrapper {
+    width: 30vw;
+    margin: 15% auto;
+    height: 44vh;
+  }
+  .form-wrapper {
+    padding: 20px;
+  }
+  .amaze-text-wrapper {
+    font-size: 25px;
+  }
+  .amaze-text-wrapper p {
+    font-size: 17px;
+  }
+  .form-control {
+    width: 100%;
+  }
+  .error-block {
+    width: 20vw;
+  }
+  .error-block span {
+    font-size: 13px;
+  }
+  .close-icon {
+    font-size: 14px;
+  }
+  .caremore-logo {
+    margin: 1% 46%;
+  }
+  .btn-block {
+    height: 3.0em;
+  }
+}

@@ -1,0 +1,147 @@
+<section class="table-section">
+
+  <!-- -dynamic table- -->
+  <div class="container">
+      <input style="color:black" type="text" id="myInput" (keyup)="myFunction()" placeholder="Search here.." title="Type in a name">
+
+    <!-- {{ character }} -->
+    <table id="tb" class="table table-bordered sortable">     <!-- <table id="example" class="table "> -->
+      <thead>
+      <tr>
+        <th data-defaultsort="enabled" *ngFor="let col of columns">
+          {{col}}
+        </th>
+      </tr>
+    </thead>
+      <tr routerLink="/info/John" *ngFor="let char of character">
+      
+          <ng-container *ngIf="char.Status == 'New'">
+                              <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> {{char.Status}}</td>
+                              </ng-container>
+          <ng-container *ngIf="char.Status == 'In Progress'">
+                              <td><span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span> {{char.Status}}</td>
+                              </ng-container>
+                              <td data-defaultsign='AZ' >{{char["First Name"]}}</td>
+                              <td data-defaultsign='AZ'>{{char["Last Name"]}}</td>
+                              <td data-dateformat="MM-DD-YYYY" data-defaultsign='month' >{{char["Discharge Date"]}}</td>
+                
+       
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- 77777777777777777777777777777777777777777777777777777777777777777777777777777777 -->
+
+<!-- 66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 -->
+<!-- <section class="table-section">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Employee ID</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+      <tr>
+        <td>Harshit</td>
+        <td>Pareek</td>
+        <td>AF098908</td>
+        <td>Amaze Admin</td>
+      </tr>
+    </tbody>
+  </table>
+  </section> -->
+<!-- <section class="table-section">
+  <div class="user-table-container">
+    <cdk-table #table [dataSource]="dataSource" class="user-table">
+      
+      <ng-container cdkColumnDef="first_name">
+        <cdk-header-cell *cdkHeaderCellDef class="user-header-cell"> FirstName </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let user" class="user-cell"> {{ user.first_name }} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="progress">
+        <cdk-header-cell *cdkHeaderCellDef class="user-header-cell"> LastName </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let user" class="user-cell"> {{ user.last_name }} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="employee_id">
+        <mat-header-cell *cdkHeaderCellDef class="user-header-cell">EmployeeID</mat-header-cell>
+        <mat-cell *matCellDef="let user" class="user-cell">{{ user.employee_id }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef class="user-header-cell">Role</mat-header-cell>
+        <mat-cell *matCellDef="let user" class="user-cell">{{ user.role }}</mat-cell>
+      </ng-container>
+  
+      <cdk-header-row *cdkHeaderRowDef="displayedColumns" class="user-header-row"></cdk-header-row>
+      <cdk-row *cdkRowDef="let row; columns: displayedColumns;" class="user-row"></cdk-row>
+    </cdk-table>
+  </div>
+</section> -->
+
+<!-- <table class="table">
+</table> -->
+
+
+
+<!-- <section class="table-section">
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="first_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.first_name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="last_name">
+      <mat-header-cell *matHeaderCellDef>LastName</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.last_name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employee_id">
+      <mat-header-cell *matHeaderCellDef>EmployeeID</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.employee_id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.role }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+  </mat-table>
+</section> -->

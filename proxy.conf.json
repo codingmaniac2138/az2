@@ -1,0 +1,6 @@
+{
+    "/amaze/**": {
+        "target": "http://sbiwas8devv01.caremore.com:8080",
+        "secure": false
+    }
+}

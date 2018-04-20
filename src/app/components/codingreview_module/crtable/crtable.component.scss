@@ -1,0 +1,88 @@
+@import "../../../../global-scss/_variables.scss";
+
+.table-section {
+    color: black;
+    background-color: $med-grey;
+    
+    .table {
+        width:1250px;
+        margin-left:-55px; 
+        margin-top:50px;
+        padding: 5px;
+        & > thead {
+            background-color: #EBEBEB;
+        }
+        & > thead > tr {
+            border-bottom-color: $light-blue;
+
+        }
+        
+        & > thead > tr > th {
+            font-weight: $font-weight-medium;
+            color: $light-blue;
+        }
+       
+        & > tbody :hover{
+            background-color:#9bbed8;
+            
+        }
+        & > tbody > tr > td {
+            border: 3px solid #EBEBEB;
+        }
+    }
+}
+
+
+// .user-table-container {
+//     display: flex;
+//     flex-direction: column;
+//     min-width: 300px;
+//   }
+  
+//   .user-table {
+//     flex: 1 1 auto;
+//     overflow: auto;
+//     max-height: 500px;
+//   }
+  
+//   .user-header-row, .user-row {
+//     display: flex;
+//     border-bottom: 1px solid #ccc;
+//     align-items: center;
+//     height: 32px;
+//     padding: 0 8px;
+//   }
+  
+//   .user-cell, .user-header-cell {
+//     flex: 1;
+//   }
+  
+//   .user-header-cell {
+//     font-size: 12px;
+//     font-weight: bold;
+//     color: rgba(0, 0, 0, 0.54);
+//   }
+  
+//   .user-cell {
+//     font-size: 13px;
+//     color: rgba(0, 0, 0, 0.87);
+//   }
+
+
+
+// .table-section {
+//     color: black;
+
+//     .mat-table {
+
+//         // .mat-header-row {
+
+//         // }
+//         .mat-row {
+//             cursor: pointer;
+//             &:hover {
+//                 background-color: $light-grey-blue;
+//             }
+//         }
+//     }
+// }

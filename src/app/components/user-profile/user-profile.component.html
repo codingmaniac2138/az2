@@ -1,0 +1,45 @@
+<section class="profile-section container-fluid">
+    <div class="row">
+        <div class="user-section">
+            <h2>{{ first_name }} {{ last_name }}</h2>
+            <div class="employee-info">
+                <span class="small-heading">Employee ID</span>
+                <br>
+                <span>{{ employee_id }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="manage-role-section">
+            <span class="role-heading">Manage Roles</span>
+            <div *ngFor="let module of modules_data; let i = index" class="custom-radio">
+              <div class="heading-wrapper">
+                <span class="radio-heading">{{ module.description | capitalize }}</span>
+                <span class="info-icon"></span>
+              </div>
+              <div class="roles-wrapper" *ngIf="customHasOwnProperty((parsed_module_roles | async), module.name); else noAccess">
+                  <label *ngFor="let role of roles_data; let j = index" class="role-label" [ngStyle]="{'opacity': givepermissions(i) ? 0.5 : 1 }">
+                      <input type="radio" [disabled]="givepermissions(i)"  [name]="module.description" [checked]="getRoleId((parsed_module_roles | async), module.name, role.name)" [value]="role.id" (change)="onSelectionChange(role, module)">
+                      <span class="circle">
+                          {{ role.description | capitalize }}
+                      </span>
+                  </label>
+              </div>
+              <ng-template #noAccess>
+                <div class="roles-wrapper">
+                    <label *ngFor="let role of roles_data; let j = index" class="role-label" [ngStyle]="{'opacity': givepermissions(i) ? 0.5 : 1 }">
+                        <input type="radio" [disabled]="givepermissions(i)"  [name]="module.description" [checked]="j == 0" [value]="role.id" (change)="onSelectionChange(role, module)">
+                        <span class="circle">
+                            {{ role.description | capitalize }}
+                        </span>
+                    </label>
+                </div>
+              </ng-template>
+            </div>
+            <div class="button-footer">
+              <button class="btn btn-default" (click)="onCancelClick()">Close</button>
+              <button class="btn btn-primary" (click)="onPutSubmit()">Submit</button>
+            </div>
+        </div>  
+    </div>
+</section>

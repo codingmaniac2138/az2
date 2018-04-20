@@ -1,0 +1,124 @@
+@import "../../../global-scss/_variables.scss";
+
+.header-wrapper {
+  height: 12vh;
+  background-color: $dark-blue;
+
+  .navbar-default {
+    background: transparent;
+    border-color: transparent;
+
+    .navbar-header {
+      margin-top: 1.2em;
+      width: 100%;
+      .navbar-brand {
+        color: $light-grey-blue;
+        font-weight: 200;
+
+        .heading {
+          font-size: medium;
+        }
+        .sub-heading {
+          font-size: x-small;
+        }
+      }
+      .navbar-collapse {
+        display: inline-block !important;
+        border-top: none;
+        box-shadow: none;
+
+        .navbar-nav {
+          margin-left: -11px;
+          margin-top: -11px;
+          font-weight: 400;
+          & > li > a {
+            color: white;
+          }
+          .super-heading {
+            display: block;
+            font-size: smaller;
+            font-weight: 100;
+            color: $light-grey-blue;
+          }
+          &.navbar-right {
+            position: absolute;
+            top: 2.9em;
+            right: 4.2em;
+            font-weight: 200;
+            font-size: 14px;
+            
+            span {
+              color: $light-grey-blue;
+              font-size: 13px;
+            }
+            .user-name {
+              color: white;
+            }
+            .user-profile {
+              display: inline-block;
+              position: absolute;
+              top: 0px;
+              right: -2.5em;
+              width: 1.9em;
+              height: 1.9em;
+              background-image: url("../../../assets/images/user-profile-icon.svg");
+              background-repeat: no-repeat;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+@media (min-width: #{$small-devices}) {
+  .header-wrapper {
+    background-color: $dark-blue;
+    .navbar-default {
+      .navbar-header {
+        .navbar-brand {
+          .heading {
+            font-size: large;
+          }
+          .sub-heading {
+            font-size: small;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: #{$medium-devices}) {
+  .header-wrapper {
+    background-color: $dark-blue;
+    .navbar-default {
+      .navbar-header {
+        .navbar-brand {
+          .heading {
+            font-size: large;
+          }
+          .sub-heading {
+            font-size: small;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: #{$large-devices}) {
+  .header-wrapper {
+    background-color: $dark-blue;
+    .navbar-default {
+      .navbar-header {
+        .navbar-brand {
+          .heading {
+            font-size: large;
+          }
+          .sub-heading {
+            font-size: small;
+          }
+        }
+      }
+    }
+  }
+}

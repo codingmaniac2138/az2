@@ -1,0 +1,35 @@
+<section class="header-wrapper">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">
+          <span class="heading">AMAZE</span>
+          <span class="sub-heading">Management Portal</span>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="/codingreview">
+                  <span class="super-heading">Area</span>
+                  {{ area }}
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="super-heading">Workspace</span>
+                  {{ workspace }}
+                </a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <span>Welcome,</span>
+                <span class="user-name">{{ username }}</span>
+                <span class="user-profile"></span>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>

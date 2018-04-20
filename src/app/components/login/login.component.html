@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row background-color">
+    <div class="main-wrapper">
+      <div [ngClass]="{'error-block': errorBlockFlag, 'error-block-hidden': !errorBlockFlag}">
+        <span>The CareMore ID or password did
+          <br /> not match.</span>
+        <i class="close-icon" (click)="closeErrorBlock()"></i>
+      </div>
+      <div class="amaze-text-wrapper">
+        <span>Amaze</span>
+        <p>Management Portal</p>
+      </div>
+      <form class="form-wrapper" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="form-group">
+          <span class="user-logo"></span>
+          <input type="text" id="username" class="form-control" [(ngModel)]="caremoreID" name="caremoreID" autocomplete="off" required>
+          <label for="username" class="floating-label">CareMore ID</label>
+        </div>
+        <div class="form-group">
+          <span class="pass-logo"></span>
+          <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password" autocomplete="off" required>
+          <label for="password" class="floating-label">Password</label>
+        </div>
+        <button class="btn btn-lg btn-block" [disabled]="!loginForm.valid" [ngClass]="{'btn-on-clicked': buttonColorFlag, 'btn-color-invalid': !loginForm.valid, 'btn-color-valid': loginForm.valid }"
+          type="submit">
+          <span *ngIf="spinnerFlag && loginForm.valid ">
+            <i class="amaze-spinner"></i>
+          </span>
+          <span [innerHtml]="buttonText">Sign In</span>
+        </button>
+        <section class="checkbox-wrapper">
+          <label>
+            <input type="checkbox" name="checkbox" [(ngModel)]="checkbox">
+            <span class="checkbox-text">Remember Me</span>
+          </label>
+          <div class="need-help">
+            <span>
+              <a data-toggle="modal" data-target="#needHelpModal">Need Help?</a>
+            </span>
+          </div>
+        </section>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="logo-wrapper">
+      <img class="caremore-logo" src="../../assets/images/caremoreLogo.png" alt="Caremore Logo">
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="needHelpModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Need Further Assistance??</h2>
+      </div>
+      <div class="modal-body">
+        Contact 1-888-ANTHEM-8 for further assistance with signing in AMAZE App.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

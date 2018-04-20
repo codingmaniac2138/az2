@@ -1,0 +1,21 @@
+@import "../../../../global-scss/_variables.scss";
+
+.container-fluid {
+  width: 100vw;
+  height: 100vh;
+  padding-right: 0px;
+  padding-left: 0px;
+
+  .header {
+   width: 100vw;
+
+  }
+}
+.fluid-background {
+  background-color:#EBEBEB; 
+}
+
+.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}
